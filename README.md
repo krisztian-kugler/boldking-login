@@ -19,6 +19,15 @@
 - Animated load spinner added to give a visual feedback about async operations.
 - Submit (Login) button becomes clickable only if both "Username" and "Password" are valid.
 
+## Usage
+
+- Fill in both the "Username" and "Password" fields to activate the Login button.
+- "Username" should be at least 9 characters long and has to start with a vowel (at least it's implemented this way in the API).
+- "Password" should be at least 9 characters long and has to contain at least one number.
+- You'll get instant visual feedback about the validity of each input field.
+- When both inputs are valid, click the Login button to "start the app".
+- After a small delay, you should see whether the login was succesful or not. From there you can go back to the login form.
+
 ## How to run the app in developer mode
 
 1. Clone the repository.
