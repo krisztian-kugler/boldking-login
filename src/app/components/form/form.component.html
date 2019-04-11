@@ -1,0 +1,59 @@
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input
+      type="text"
+      class="form-control"
+      name="username"
+      id="username"
+      required
+      ngModel
+      #usernameInput="ngModel"
+      autocomplete="off"
+      (input)="onUsernameInput(usernameInput)"
+    />
+    <ng-template *ngIf="validating; then loading; else content"></ng-template>
+    <ng-template #content>
+      <div
+        class="validation"
+        *ngIf="usernameInput.touched || usernameInput.dirty"
+        [ngClass]="{ valid: username.valid, invalid: !username.valid && !networkError, error: !username.valid && networkError }"
+        #content
+      >
+        <div class="message">
+          <i class="fas fa-check" *ngIf="username.valid"></i>
+          <i class="fas fa-times" *ngIf="!username.valid && !networkError"></i>
+          <i class="fas fa-plug" *ngIf="!username.valid && networkError"></i>
+          <small>{{ username.validationResponse }}</small>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #loading>
+      <div class="validating">
+        <app-spinner [borderWidth]="'2px'" [size]="'16px'" [animationDuration]="'200ms'"></app-spinner>
+        <small>Validating...</small>
+      </div>
+    </ng-template>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" name="password" id="password" required ngModel #password="ngModel" minlength="9" [pattern]="passwordPattern" />
+    <div class="validation" *ngIf="password.touched || password.dirty" [ngClass]="{ valid: password.valid, invalid: !password.valid }">
+      <div class="message" *ngIf="password.valid">
+        <i class="fas fa-check"></i>
+        <small>Password is valid</small>
+      </div>
+      <div class="message" *ngIf="(!password.valid && password.errors.pattern) || !password.value.length">
+        <i class="fas fa-times"></i>
+        <small>Password has to contain at least one number</small>
+      </div>
+      <div class="message" *ngIf="(!password.valid && password.errors.minlength) || !password.value.length">
+        <i class="fas fa-times"></i>
+        <small>Minimum password length is 9 characters</small>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="login-button" [disabled]="!password.valid || !username.valid">Log in</button>
+</form>
