@@ -18,6 +18,7 @@
 - Since the validate() function mimics an API call, I decided to add a simple debouncing feature that adds a little delay after an input change to actually make the call. This would lower the amount of requests to be sent if we start typing quickly in the "Username" input field.
 - Animated load spinner added to give a visual feedback about async operations.
 - Submit (Login) button becomes clickable only if both "Username" and "Password" are valid.
+- I structured the project the same way I would have done it with a much bigger Angular application, despite the fact that for such a tiny app there was no real benefit of using many of the things I used here: Sass, splitting the app into components, using a data service, creating interfaces for data types etc.
 
 ## Usage
 
