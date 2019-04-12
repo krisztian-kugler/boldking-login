@@ -11,7 +11,7 @@
 
 ## Notes
 
-- Even though design was not a requirement, I still applied some styling to the app to make it look at least a bit better.
+- Even though design was not a requirement, I still applied some styling to the app to make it look at least a bit better. No UX-focused decisions or pixel-perfect alignment, just a little CSS.
 - The actual coding part took me about 60 minutes to complete.
 - Both "Username" and "Password" are validated dynamically, on the fly.
 - "Username" uses the provided validate() function, "Password" uses Angular form validation.
